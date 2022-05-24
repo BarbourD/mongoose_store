@@ -1,9 +1,10 @@
 //DEPENDENCIES
 const express = require('express');
-const req = require('express/lib/request');
 const app = express();
 require('dotenv').config();
 const mongoose = require('mongoose');
+const Product = require("./models/product.js");
+
 
 //DATABASE CONNECTON
 mongoose.connect(process.env.DATABASE_URL, {
@@ -22,11 +23,22 @@ db.on("disconnected", () => console.log("mongo disconnected"));
 app.use(express.urlencoded({extend: true}));
 
 //SEED
-const storeSeed = require('./models/storeSeed.js');
+const productSeed = require('./models/productSeed.js');
+
+app.get('/store/seed/', (req, res) => {
+    Product.deleteMany({}, (error, allProduct) => {});
+    Product.create(productSeed, (error, data) => {
+        res.redirect('/store');
+    });
+});
 
 //INDEX.GET
-app.get('/', (req, res) => {
-
+app.get('/store', (req, res) => {
+    Product.find({}, (error, allProducts) => {   
+        res.render("index.ejs", {
+            products: allProducts,
+        });
+    });
 });
 
 //NEW.GET
@@ -40,7 +52,13 @@ app.get('/', (req, res) => {
 //EDIT.GET
 
 //SHOW.GET
-
+app.get('/store/:id', (req, res) => {
+    Product.findById(req.params.id, (err, foundProduct) => {
+        res.render('show.ejs', {
+            product: foundProduct,
+        });
+    });
+});
 //LISTENER
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
