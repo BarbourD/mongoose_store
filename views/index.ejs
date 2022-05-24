@@ -12,15 +12,16 @@
     <a href="/store/new">Add New Products</a>
 </nav>
     <h1> Mongoose Store</h1>
-    <ul>
+    <div>
         <% products.forEach(product => { %>
-            <li> <%= product.name; %> </li>
+         <%= product.name; %> <br />
             <a href="/store/<%=product._id; %>"> 
-                <img src="<%= product.img; %>"></a>
-            <li> $<%=product.price; %> <br />
-        </li>
+                <img src="<%= product.img; %>" alt=" <%= product.name %>">
+            </a> <br />
+             $<%=product.price; %> <br />
+        
        <% }) %>
-    </ul>
+            </div>
 
 </body>
 

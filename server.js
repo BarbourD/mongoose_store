@@ -23,14 +23,14 @@ db.on("disconnected", () => console.log("mongo disconnected"));
 app.use(express.urlencoded({extend: true}));
 
 //SEED
-const productSeed = require('./models/productSeed.js');
+// const productSeed = require('./models/productSeed.js');
 
-app.get('/store/seed/', (req, res) => {
-    Product.deleteMany({}, (error, allProduct) => {});
-    Product.create(productSeed, (error, data) => {
-        res.redirect('/store');
-    });
-});
+// app.get('/store/seed/', (req, res) => {
+//     Product.deleteMany({}, (error, allProduct) => {});
+//     Product.create(productSeed, (error, data) => {
+//         res.redirect('/store');
+//     });
+// });
 
 //INDEX.GET
 app.get('/store', (req, res) => {
@@ -42,12 +42,19 @@ app.get('/store', (req, res) => {
 });
 
 //NEW.GET
-
+app.get("/store/new", (req, res) => {
+    res.render("new.ejs");
+})
 //DESTROY.DELETE
 
 //UPDATE.PUT
 
 //CREATE.POST
+app.post("/store", (req, res) => {
+    Product.create(req.body, (erroe, createProduct) => {
+        res.redirect('/store');
+    });
+});
 
 //EDIT.GET
 
