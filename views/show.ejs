@@ -15,15 +15,16 @@
         <img src="<%=product.img%>" alt="<%= product.name %>">
         <p>Here are some <%= product.name %></p> <br />
         <p>Price: $<%= product.price %> </p>
-<!--amount remaining goes here-->
-        <!--Buy Button Goes Here-->
-        <!-- <form action="/store/<%=product._id%>?_method=PUT" method="POST">
-            <% for (let i = 0; i > product.length; i-- )%>
 
-            <input type="submit" value="BUY">
-
+        <% if(product.qty > 0) { %>
+        Quantity: <%=product.qty%> <br />
+        <form action="/store/<%=product._id%>/buy" method="POST">
+            <input type="submit" value="Buy" />
+        </form>
+        <% } else { %>
+            OUT OF STOCK 
+            <% } %>
         
-        </form> -->
  <!-- Below is where the links to the Destroy and Edit routes go -->
         <a href="/store/<%=product._id%>/edit">Edit This Product</a>
 
