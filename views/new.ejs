@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Product</title>
+    <%- include('./partials/head.ejs')%>
 </head>
 
 <body>
     <h1> New Product</h1>
+    <div class="forms">
     <form action="/store" method="POST">
         Name: <input type="text" name="name" /><br />
         Image: <input type="text" name="img" /><br />
@@ -16,5 +14,6 @@
         Price: <input type="number" name="price" /><br />
         Quantity: <input type="number" name="qty" /> <br />
         <input type="submit" name="" value="Add Product">
+    </div>
 </body>
 </html>

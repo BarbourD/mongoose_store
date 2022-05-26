@@ -1,3 +1,41 @@
+nav {
+    background-color: beige;
+    padding: 50px;
+    text-align: center;
+}
+
 body {
-    background-color: blue;
+    background-color: burlywood;
+    
+}
+
+h1 {
+    text-align: center;
+}
+
+div {
+display: flex;
+justify-content: space-evenly;
+border-radius: 10px;
+margin: 1px 1px 1px 1px;
+padding: 10px;
+background-color: bisque;
+}
+
+.unique {
+    display: flex;
+    flex-flow: column;
+    align-content: center;
+    margin: 10px 382px 0 400px;
+}
+
+img {
+    width: 300px
+}
+p {
+    text-align: justify;
+}
+
+a {
+    font-size: x-large;
 }

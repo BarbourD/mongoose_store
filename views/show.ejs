@@ -1,35 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+        <%- include('./partials/head.ejs')%>
     </head>
     <body>
         <nav> 
             <a href="/store">Back to Mongoose Store</a>
-     </nav>
-
+        </nav>
         <h1>   <%= product.name %> </h1>
-        <img src="<%=product.img%>" alt="<%= product.name %>">
-        <p>Here are some <%= product.name %></p> <br />
-        <p>Price: $<%= product.price %> </p>
+        <div class="unique">
+            <img src="<%=product.img%>" alt="<%= product.name %>">
+            <p>Here are some <%= product.name %></p> <br />
+            <p>Price: $<%= product.price %> </p>
 
-        <% if(product.qty > 0) { %>
-        Quantity: <%=product.qty%> <br />
-        <form action="/store/<%=product._id%>/buy" method="POST">
-            <input type="submit" value="Buy" />
-        </form>
-        <% } else { %>
-            OUT OF STOCK 
+            <% if(product.qty > 0) { %>
+            Quantity: <%=product.qty%> <br />
+            <form action="/store/<%=product._id%>/buy" method="POST">
+                <input type="submit" value="Buy" />
+            </form>
+            <% } else { %>
+                OUT OF STOCK 
             <% } %>
         
- <!-- Below is where the links to the Destroy and Edit routes go -->
-        <a href="/store/<%=product._id%>/edit">Edit This Product</a>
+            <a href="/store/<%=product._id%>/edit">Edit This Product</a>
 
-        <form action="/store/<%= product._id %>?_method=DELETE" method="POST">
-         <input type="submit" value="DELETE" />
-        </form>
+             <form action="/store/<%= product._id %>?_method=DELETE" method="POST">
+                <input type="submit" value="DELETE" />
+            </form>
+        </div>
     </body>
 </html>
