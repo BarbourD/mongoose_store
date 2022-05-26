@@ -5,6 +5,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const methodOverride = require("method-override");
 const storeController = require('./controllers/products.js')
+app.use(express.static('public'))
 
 //DATABASE CONNECTON
 mongoose.connect(process.env.DATABASE_URL, {
